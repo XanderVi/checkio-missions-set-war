@@ -1,0 +1,43 @@
+<p>
+I'm sure that many of you has some experience with the computer games. Have you ever had a desire to change the game in such way that the characters or game world will look more appropriate to your picture of the perfect game? Probably, yes.<br>
+In this mission (and in the few subsequent, linked to this one) you will have a chance "to sit in the developer's chair" and create a logic of the simple game about battles.<br>
+Let's start with the simple task - 1 vs 1 duel. In this mission you have to create the class <strong>Warrior</strong>, whose instances will have 2 parameters - health and attack. Also you should create a function <strong>fight()</strong>, which will make the duels between 2 warriors and define the strongest of them. The duel will happens like this:<br>
+every turn the first warrior will hit the second and the second will lose his health in the same value as the attack of the first warrior. The second warrior will do the same to the first. We will assume that the both warriors hit each other simultaneously, so, if in the end of the turn the both warriors have 0 or lower health, the function should return <strong>"Both died..."</strong>.<br>
+In the other case, if in the end of the turn only one warrior has 0 or lower health and the other one in not, the function should return <strong>"First warrior wins!"</strong> or <strong>"Second warrior wins!"</strong>.
+</p>
+
+<p>
+<strong>Example</strong>:
+<pre class="brush: python">
+chuck = Warrior(25, 2)
+bruce = Warrior(20, 3)
+jack = Warrior(35, 1)
+henry = Warrior(20, 1)
+bob = Warrior(10, 2)
+    
+fight(chuck, bruce) == "Second warrior wins!"
+fight(chuck, jack) == "First warrior wins!"
+fight(bruce, jack) == "First warrior wins!"
+fight(henry, bob) == "Both died..."
+</pre>
+</p>
+
+<p>
+    <strong>Input: </strong>warriors.
+</p>
+
+<p>
+    <strong>Output: </strong>the winner.
+</p>
+
+
+<p class="for_info_only">
+    <strong>How it is used: </strong>
+    For the computer games development.
+</p>
+
+<p>
+    <strong>Precondition:</strong>
+    health > 0<br>
+    attack > 0
+</p>

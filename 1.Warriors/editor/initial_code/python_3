@@ -1,0 +1,20 @@
+class Warrior:
+    pass
+
+def fight(warrior_1, warrior_2):
+    return 0
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+
+    chuck = Warrior(25, 2)
+    bruce = Warrior(20, 3)
+    jack = Warrior(35, 1)
+    henry = Warrior(20, 1)
+    bob = Warrior(10, 2)
+    
+    assert fight(chuck, bruce) == "Second warrior wins!"
+    assert fight(chuck, jack) == "First warrior wins!"
+    assert fight(bruce, jack) == "First warrior wins!"
+    assert fight(henry, bob) == "Both died..."
+    print("Coding complete? Let's try tests!")

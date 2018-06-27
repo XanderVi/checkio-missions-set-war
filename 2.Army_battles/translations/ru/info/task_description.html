@@ -1,0 +1,52 @@
+<p>
+В прошлой миссии - Warriors, вы научились устраивать дуэли между 2 отдельными воинами. Отличная работа! Но давайте перейдем к чему-то более эпичному - к армиям! В этой миссии ваша задача - добавить к уже существующим классам и функциям новые: <strong>Army</strong>, который будет обладать методом <strong>add_unit()</strong>, позволяющим добавлять выбранного воина в армию, а также создать функцию <strong>battle()</strong>, которая будет устраивать сражения и определять сильнейшую армию.<br>
+Сражения между армиями происходят по следующему принципу:<br>
+сперва проводится дуэль между первым воином первой армии и первым воином второй. Как только один из них погибает - в дуэль вступает следующий воин из той армии, которая потеряла бойца, а выживший воин со своим текущим здоровьем продолжает сражаться. Так продолжается до тех пор, пока все воины одной из армий не умрут. В этом случае функция battle() возвращает <strong>"First army wins!"</strong> или <strong>"Second army wins!"</strong>. Если же в результате сражений погибли все воины в обеих армиях, то функция должна вернуть <strong>"All died..."</strong>.
+</p>
+
+<p>
+<strong>Пример</strong>:
+<pre class="brush: python">
+bob = Warrior(20, 4)
+carl = Warrior(30, 5)
+jimbo = Warrior(50, 1)
+han = Warrior(40, 3)
+luc = Warrior(60, 2)
+
+my_army = Army()
+my_army.add_unit(bob)
+my_army.add_unit(carl)
+my_army.add_unit(jimbo)
+
+enemy_army = Army()
+enemy_army.add_unit(han)
+enemy_army.add_unit(luc)
+
+neutral_minions = Army()
+neutral_minions.add_unit(jimbo)
+neutral_minions.add_unit(carl)
+
+battle(my_army, enemy_army) == "First army wins!"
+battle(neutral_minions, enemy_army) == "Second army wins!"
+</pre>
+</p>
+
+<p>
+    <strong>Входные данные: </strong>воины и армии.
+</p>
+
+<p>
+    <strong>Выходные данные: </strong>победитель.
+</p>
+
+
+<p class="for_info_only">
+    <strong>Как это используется: </strong>
+    Для разработки компьютерных игр.
+</p>
+
+<p>
+    <strong>Предусловие:</strong>
+    здоровье > 0<br>
+    атака > 0
+</p>

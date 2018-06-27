@@ -1,0 +1,50 @@
+class Army:
+    pass
+
+class Warrior:
+    pass
+
+def fight(warrior_1, warrior_2):
+    return 0
+
+def battle(army_1, army_2):
+    return 0
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    
+    #fight tests
+    chuck = Warrior(25, 2)
+    bruce = Warrior(20, 3)
+    jack = Warrior(35, 1)
+    henry = Warrior(20, 1)
+    tom = Warrior(10, 2)
+    
+    assert fight(chuck, bruce) == "Second warrior wins!"
+    assert fight(chuck, jack) == "First warrior wins!"
+    assert fight(bruce, jack) == "First warrior wins!"
+    assert fight(henry, tom) == "Both died..."
+
+    #battle tests
+    bob = Warrior(20, 4)
+    carl = Warrior(30, 5)
+    jimbo = Warrior(50, 1)
+    han = Warrior(40, 3)
+    luc = Warrior(60, 2)
+
+    my_army = Army()
+    my_army.add_unit(bob)
+    my_army.add_unit(carl)
+    my_army.add_unit(jimbo)
+
+    enemy_army = Army()
+    enemy_army.add_unit(han)
+    enemy_army.add_unit(luc)
+
+    neutral_minions = Army()
+    neutral_minions.add_unit(jimbo)
+    neutral_minions.add_unit(carl)
+
+    assert battle(my_army, enemy_army) == "First army wins!"
+    assert battle(neutral_minions, enemy_army) == "Second army wins!"
+    print("Coding complete? Let's try tests!")
