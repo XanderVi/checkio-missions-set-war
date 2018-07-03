@@ -7,14 +7,10 @@ def fight(warrior_1, warrior_2):
 if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing
 
-    chuck = Warrior(25, 2)
-    bruce = Warrior(20, 3)
-    jack = Warrior(35, 1)
-    henry = Warrior(20, 1)
-    bob = Warrior(10, 2)
+    chuck = Warrior()
+    bruce = Warrior()
     
-    assert fight(chuck, bruce) == "Second warrior wins!"
-    assert fight(chuck, jack) == "First warrior wins!"
-    assert fight(bruce, jack) == "First warrior wins!"
-    assert fight(henry, bob) == "Both died..."
+    assert fight(chuck, bruce) == True
+    assert chuck.is_alive == True
+    assert bruce.is_alive == False
     print("Coding complete? Let's try tests!")

@@ -26,40 +26,44 @@ def prepare_test(test="", answer=None, middle_code="", show_code=None):
 
 TESTS = {
     "1. Fight": [
-        prepare_test(middle_code='''carl = Warrior(20, 1)
-jim = Warrior(10, 2)''',
+        prepare_test(middle_code='''carl = Warrior()
+jim = Warrior()''',
                      test="fight(carl, jim)",
-                     answer="Both died...")
+                     answer=True)
                 ],
 
     "2. Fight": [
-        prepare_test(middle_code='''ramon = Warrior(67, 4)
-slevin = Warrior(99, 3)''',
+        prepare_test(middle_code='''ramon = Warrior()
+slevin = Warrior()''',
                      test="fight(ramon, slevin)",
-                     answer="Second warrior wins!")
+                     answer=True)
                 ],
     "3. Fight": [
-        prepare_test(middle_code='''bob = Warrior(13, 3)
-mars = Warrior(30, 1)''',
-                     test="fight(bob, mars)",
-                     answer="First warrior wins!")
+        prepare_test(middle_code='''bob = Warrior()
+mars = Warrior()
+fight(bob, mars)''',
+                     test="bob.is_alive",
+                     answer=True)
                 ],
     "4. Fight": [
-        prepare_test(middle_code='''zeus = Warrior(9999, 2)
-godkiller = Warrior(202, 99)''',
-                     test="fight(zeus, godkiller)",
-                     answer="Both died...")
+        prepare_test(middle_code='''zeus = Warrior()
+godkiller = Warrior()
+fight(zeus, godkiller)''',
+                     test="zeus.is_alive",
+                     answer=True)
                 ],
     "5. Fight": [
-        prepare_test(middle_code='''husband = Warrior(50, 2)
-wife = Warrior(25, 3)''',
-                     test="fight(husband, wife)",
-                     answer="First warrior wins!")
+        prepare_test(middle_code='''husband = Warrior()
+wife = Warrior()
+fight(husband, wife)''',
+                     test="wife.is_alive",
+                     answer=False)
                 ],
     "6. Fight": [
-        prepare_test(middle_code='''dragon = Warrior(666, 3)
-knight = Warrior(99, 25)''',
-                     test="fight(dragon, knight)",
-                     answer="Second warrior wins!")
+        prepare_test(middle_code='''dragon = Warrior()
+knight = Warrior()
+fight(dragon, knight)''',
+                     test="knight.is_alive",
+                     answer=False)
                 ]
 }
