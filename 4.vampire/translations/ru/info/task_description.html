@@ -1,5 +1,5 @@
 <p>
-Итак, у нас есть 2 типа солдат: Warrior and Defender. Давайте сделаем сражения армий еще более эпичными и добавим новый тип юнитов - Vampire!<br>
+Итак, у нас есть 3 типа солдат: Warrior, Knight и Defender. Давайте сделаем сражения армий еще более эпичными и добавим новый тип юнитов - Vampire!<br>
 Vampire должен быть наследником класса Warrior и иметь дополнительный параметр - <strong>vampirism</strong>, который помогает ему исцелять себя. Когда вампир наносит удар другому юниту, то восставнавливает себе здоровье в размере +vampirism.<br>
 Базовые параметры класса Vampire:<br>
 health = 40<br>
@@ -12,10 +12,15 @@ vampirism = 2<br>
 <pre class="brush: python">
 chuck = Warrior()
 bruce = Warrior()
-    
+carl = Knight()
+dave = Warrior()
+
 fight(chuck, bruce) == True
+fight(dave, carl) == False
 chuck.is_alive == True
 bruce.is_alive == False
+carl.is_alive == True
+dave.is_alive == False
 
 my_army = Army()
 my_army.add_units(Defender, 2)
@@ -45,7 +50,7 @@ battle(army_3, army_4) == True
 </p>
 
 <p>
-    <strong>Выходные данные: </strong>True или False.
+    <strong>Выходные данные: </strong>результат сражения (True или False).
 </p>
 
 
@@ -56,5 +61,5 @@ battle(army_3, army_4) == True
 
 <p>
     <strong>Предусловие:</strong>
-    3 типа солдат
+    4 типа солдат
 </p>

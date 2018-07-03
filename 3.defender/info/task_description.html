@@ -1,5 +1,5 @@
 <p>
-In the previous mission - Army battles, you've learned how to make a battle between 2 armies. But we have only 1 type of units - Warriors. Let's add another one - Defender. It should be the subclass of the Warrior and has additional parameter - <strong>defense</strong>, which help him to survive longer. When another unit hit the defender, the defender lose his health in the amount by the next formula: enemy attack - self defense.<br>
+In the previous mission - Army battles, you've learned how to make a battle between 2 armies. But we have only 2 type of units - Warriors and Knights. Let's add another one - Defender. It should be the subclass of the Warrior and has additional parameter - <strong>defense</strong>, which help him to survive longer. When another unit hit the defender, the defender lose his health in the amount by the next formula: enemy attack - self defense.<br>
 The basic parameters of the Defender:<br>
 health = 60<br>
 attack = 3<br>
@@ -11,10 +11,15 @@ defense = 2<br>
 <pre class="brush: python">
 chuck = Warrior()
 bruce = Warrior()
-    
+carl = Knight()
+dave = Warrior()
+
 fight(chuck, bruce) == True
+fight(dave, carl) == False
 chuck.is_alive == True
 bruce.is_alive == False
+carl.is_alive == True
+dave.is_alive == False
 
 my_army = Army()
 my_army.add_units(Defender, 1)
@@ -39,7 +44,7 @@ battle(army_3, army_4) == True
 </p>
 
 <p>
-    <strong>Output: </strong>True or False.
+    <strong>Output: </strong>result of the battle (True or False).
 </p>
 
 
@@ -50,5 +55,5 @@ battle(army_3, army_4) == True
 
 <p>
     <strong>Precondition:</strong>
-    2 types of the units
+    3 types of the units
 </p>

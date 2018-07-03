@@ -1,5 +1,5 @@
 <p>
-So we have 2 types of the units: Warrior and Defender. Let's make army battles even more epic and add another one type - Vampire!<br>
+So we have 3 types of the units: Warrior, Knight and Defender. Let's make army battles even more epic and add another one type - Vampire!<br>
 Vampire should be the subclass of the Warrior and has the additional parameter - <strong>vampirism</strong>, which help him to heal himself. When Vampire hit the other unit, he restore his health by +vampirism.<br>
 The basic parameters of the Vampire:<br>
 health = 40<br>
@@ -12,10 +12,15 @@ vampirism = 2<br>
 <pre class="brush: python">
 chuck = Warrior()
 bruce = Warrior()
-    
+carl = Knight()
+dave = Warrior()
+
 fight(chuck, bruce) == True
+fight(dave, carl) == False
 chuck.is_alive == True
 bruce.is_alive == False
+carl.is_alive == True
+dave.is_alive == False
 
 my_army = Army()
 my_army.add_units(Defender, 2)
@@ -45,7 +50,7 @@ battle(army_3, army_4) == True
 </p>
 
 <p>
-    <strong>Output: </strong>True or False.
+    <strong>Output: </strong> result of the battle (True or False).
 </p>
 
 
@@ -56,5 +61,5 @@ battle(army_3, army_4) == True
 
 <p>
     <strong>Precondition:</strong>
-    3 types of the units
+    4 types of the units
 </p>

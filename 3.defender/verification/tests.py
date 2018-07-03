@@ -9,6 +9,14 @@ if not "Warrior" in USER_GLOBAL:
 
 Warrior = USER_GLOBAL['Warrior']
 
+if not "Knight" in USER_GLOBAL:
+    raise NotImplementedError("Where is 'Knight'?")
+
+Knight = USER_GLOBAL['Knight']
+
+if not issubclass(Knight, Warrior):
+    raise Warning("Knight should be the sublcass of the Warrior")
+
 if not "Defender" in USER_GLOBAL:
     raise NotImplementedError("Where is 'Defender'?")
 
@@ -42,13 +50,13 @@ def prepare_test(test="", answer=None, middle_code="", show_code=None):
 TESTS = {
     "1. Fight": [
         prepare_test(middle_code='''carl = Warrior()
-jim = Warrior()''',
+jim = Knight()''',
                      test="fight(carl, jim)",
-                     answer=True)
+                     answer=False)
                 ],
 
     "2. Fight": [
-        prepare_test(middle_code='''ramon = Warrior()
+        prepare_test(middle_code='''ramon = Knight()
 slevin = Warrior()''',
                      test="fight(ramon, slevin)",
                      answer=True)
@@ -61,7 +69,7 @@ fight(bob, mars)''',
                      answer=True)
                 ],
     "4. Fight": [
-        prepare_test(middle_code='''zeus = Warrior()
+        prepare_test(middle_code='''zeus = Knight()
 godkiller = Warrior()
 fight(zeus, godkiller)''',
                      test="zeus.is_alive",
@@ -76,10 +84,10 @@ fight(husband, wife)''',
                 ],
     "6. Fight": [
         prepare_test(middle_code='''dragon = Warrior()
-knight = Warrior()
+knight = Knight()
 fight(dragon, knight)''',
                      test="knight.is_alive",
-                     answer=False)
+                     answer=True)
                 ],
     "1. Battle": [
         prepare_test(middle_code='''army_1 = Army()

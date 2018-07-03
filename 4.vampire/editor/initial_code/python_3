@@ -4,13 +4,16 @@ class Army:
 class Warrior:
     pass
 
+class Knight(Warrior):
+    pass
+
 class Defender(Warrior):
     pass
 
 class Vampire(Warrior):
     pass
 
-def fight(warrior_1, warrior_2):
+def fight(unit_1, unit_2):
     return 0
 
 def battle(army_1, army_2):
@@ -22,10 +25,15 @@ if __name__ == '__main__':
     #fight tests
     chuck = Warrior()
     bruce = Warrior()
-    
+    carl = Knight()
+    dave = Warrior()
+
     assert fight(chuck, bruce) == True
+    assert fight(dave, carl) == False
     assert chuck.is_alive == True
     assert bruce.is_alive == False
+    assert carl.is_alive == True
+    assert dave.is_alive == False
 
     #battle tests
     my_army = Army()

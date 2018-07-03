@@ -4,7 +4,10 @@ class Army:
 class Warrior:
     pass
 
-def fight(warrior_1, warrior_2):
+class Knight(Warrior):
+    pass
+
+def fight(unit_1, unit_2):
     return 0
 
 def battle(army_1, army_2):
@@ -16,24 +19,30 @@ if __name__ == '__main__':
     #fight tests
     chuck = Warrior()
     bruce = Warrior()
-    
+    carl = Knight()
+    dave = Warrior()
+
     assert fight(chuck, bruce) == True
+    assert fight(dave, carl) == False
     assert chuck.is_alive == True
     assert bruce.is_alive == False
+    assert carl.is_alive == True
+    assert dave.is_alive == False
 
     #battle tests
     my_army = Army()
-    my_army.add_units(Warrior, 1)
+    my_army.add_units(Knight, 3)
     
     enemy_army = Army()
-    enemy_army.add_units(Warrior, 2)
+    enemy_army.add_units(Warrior, 3)
 
     army_3 = Army()
     army_3.add_units(Warrior, 20)
+    army_3.add_units(Knight, 5)
     
     army_4 = Army()
-    army_4.add_units(Warrior, 21)
+    army_4.add_units(Warrior, 30)
 
-    assert battle(my_army, enemy_army) == False
-    assert battle(army_3, army_4) == True
+    assert battle(my_army, enemy_army) == True
+    assert battle(army_3, army_4) == False
     print("Coding complete? Let's try tests!")

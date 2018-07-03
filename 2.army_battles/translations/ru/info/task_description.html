@@ -9,25 +9,31 @@
 <pre class="brush: python">
 chuck = Warrior()
 bruce = Warrior()
-    
+carl = Knight()
+dave = Warrior()
+
 fight(chuck, bruce) == True
+fight(dave, carl) == False
 chuck.is_alive == True
 bruce.is_alive == False
+carl.is_alive == True
+dave.is_alive == False
 
 my_army = Army()
-my_army.add_units(Warrior, 1)
+my_army.add_units(Knight, 3)
     
 enemy_army = Army()
-enemy_army.add_units(Warrior, 2)
+enemy_army.add_units(Warrior, 3)
 
 army_3 = Army()
 army_3.add_units(Warrior, 20)
+army_3.add_units(Knight, 5)
     
 army_4 = Army()
-army_4.add_units(Warrior, 21)
+army_4.add_units(Warrior, 30)
 
-battle(my_army, enemy_army) == False
-battle(army_3, army_4) == True
+battle(my_army, enemy_army) == True
+battle(army_3, army_4) == False
 </pre>
 </p>
 
@@ -36,7 +42,7 @@ battle(army_3, army_4) == True
 </p>
 
 <p>
-    <strong>Выходные данные: </strong>True или False.
+    <strong>Выходные данные: </strong>результат битвы (True или False).
 </p>
 
 
@@ -47,6 +53,5 @@ battle(army_3, army_4) == True
 
 <p>
     <strong>Предусловие:</strong>
-    здоровье == 50<br>
-    атака == 5
+    2 типа солдат
 </p>
