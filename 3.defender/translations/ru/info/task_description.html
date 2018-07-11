@@ -1,5 +1,5 @@
 <p>
-В предыдущей миссии - Army battles вы научились устраивать сражения между двумя армиями. Но пока что у нас был всего 2 типа солдат - Warriors и Knights. Давайте добавим еще один тип - Defender. Он должен быть наследником класса Warrior и иметь дополнительный параметр - <strong>defense</strong> (защита), который помогает ему выживать дольше. Когда другой солдат бьет defender, то defender теряет здоровье в количестве: атака соперника - защита defender.<br>
+В предыдущей миссии - Army battles вы научились устраивать сражения между двумя армиями. Но пока что у нас был всего 2 типа солдат - Warriors и Knights. Давайте добавим еще один тип - Defender. Он должен быть наследником класса Warrior и иметь дополнительный параметр - <strong>defense</strong> (защита), который помогает ему выживать дольше. Когда другой солдат бьет defender, то defender теряет здоровье в количестве: атака соперника - защита defender (если атака соперника больше, чем защита defender). В ином случае defender не теряет здоровья.<br>
 Базовые параметры класса Defender:<br>
 health = 60<br>
 attack = 3<br>
@@ -13,6 +13,11 @@ chuck = Warrior()
 bruce = Warrior()
 carl = Knight()
 dave = Warrior()
+mark = Warrior()
+bob = Defender()
+mike = Knight()
+rog = Warrior()
+lancelot = Defender()
 
 fight(chuck, bruce) == True
 fight(dave, carl) == False
@@ -20,6 +25,10 @@ chuck.is_alive == True
 bruce.is_alive == False
 carl.is_alive == True
 dave.is_alive == False
+fight(carl, mark) == False
+carl.is_alive == False
+fight(bob, mike) == False
+fight(lancelot, rog) == True
 
 my_army = Army()
 my_army.add_units(Defender, 1)
@@ -34,8 +43,10 @@ army_3.add_units(Defender, 1)
 army_4 = Army()
 army_4.add_units(Warrior, 2)
 
-battle(my_army, enemy_army) == False
-battle(army_3, army_4) == True
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == False
+battle.fight(army_3, army_4) == True
 </pre>
 </p>
 

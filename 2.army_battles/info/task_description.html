@@ -1,5 +1,5 @@
 <p>
-In the previous mission - Warriors you've learned how to make a duels between 2 warriors. Good work! But let's move to the more epic thing - the armies! In this mission your task is to add a new class and a function to the existed. The new class is <strong>Army</strong> which will has the method <strong>add_units()</strong> - for the adding chosen amount of units to the army. Also you need to create a <strong>battle()</strong> function, which will choose the strongest army.<br>
+In the previous mission - Warriors you've learned how to make a duels between 2 warriors. Good work! But let's move to the more epic thing - the armies! In this mission your task is to add a new class and a function to the existed. The new class is <strong>Army</strong> which will has the method <strong>add_units()</strong> - for the adding chosen amount of units to the army. Also you need to create a <strong>Battle()</strong> with a <strong>fight()</strong> function, which will choose the strongest army.<br>
 The battles will go by the next principles:<br>
 at the first will be the duel between the first unit of the first army and the first unit of the second army. As soon as one of the duelists will be dead, the second unit from the army, which has lost the warrior, will continue the duel, and the survived warrior is also continue but with his current (not full) health. The battle goes on while every army has at least 1 live unit. After the battle the function should return the result: <strong>True</strong> if the first army wins or <strong>False</strong> in the other case.<br>
 </p>
@@ -11,6 +11,7 @@ chuck = Warrior()
 bruce = Warrior()
 carl = Knight()
 dave = Warrior()
+mark = Warrior()
 
 fight(chuck, bruce) == True
 fight(dave, carl) == False
@@ -18,6 +19,8 @@ chuck.is_alive == True
 bruce.is_alive == False
 carl.is_alive == True
 dave.is_alive == False
+fight(carl, mark) == False
+carl.is_alive == False
 
 my_army = Army()
 my_army.add_units(Knight, 3)
@@ -32,8 +35,10 @@ army_3.add_units(Knight, 5)
 army_4 = Army()
 army_4.add_units(Warrior, 30)
 
-battle(my_army, enemy_army) == True
-battle(army_3, army_4) == False
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == True
+battle.fight(army_3, army_4) == False
 </pre>
 </p>
 

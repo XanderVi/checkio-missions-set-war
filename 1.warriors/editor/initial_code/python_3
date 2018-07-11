@@ -14,6 +14,7 @@ if __name__ == '__main__':
     bruce = Warrior()
     carl = Knight()
     dave = Warrior()
+    mark = Warrior()
 
     assert fight(chuck, bruce) == True
     assert fight(dave, carl) == False
@@ -21,5 +22,7 @@ if __name__ == '__main__':
     assert bruce.is_alive == False
     assert carl.is_alive == True
     assert dave.is_alive == False
+    assert fight(carl, mark) == False
+    assert carl.is_alive == False
 
     print("Coding complete? Let's try tests!")

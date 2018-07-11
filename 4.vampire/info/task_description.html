@@ -1,10 +1,10 @@
 <p>
 So we have 3 types of the units: Warrior, Knight and Defender. Let's make army battles even more epic and add another one type - Vampire!<br>
-Vampire should be the subclass of the Warrior and has the additional parameter - <strong>vampirism</strong>, which help him to heal himself. When Vampire hit the other unit, he restore his health by +vampirism.<br>
+Vampire should be the subclass of the Warrior and has the additional parameter - <strong>vampirism</strong>, which help him to heal himself. When Vampire hit the other unit, he restore his health by +50% of the dealed damage (enemy defense make dealed damage value lower).<br>
 The basic parameters of the Vampire:<br>
 health = 40<br>
 attack = 4<br>
-vampirism = 2<br>
+vampirism = 50%<br>
 </p>
 
 <p>
@@ -14,6 +14,15 @@ chuck = Warrior()
 bruce = Warrior()
 carl = Knight()
 dave = Warrior()
+mark = Warrior()
+bob = Defender()
+mike = Knight()
+rog = Warrior()
+lancelot = Defender()
+eric = Vampire()
+adam = Vampire()
+richard = Defender()
+ogre = Warrior()
 
 fight(chuck, bruce) == True
 fight(dave, carl) == False
@@ -21,6 +30,12 @@ chuck.is_alive == True
 bruce.is_alive == False
 carl.is_alive == True
 dave.is_alive == False
+fight(carl, mark) == False
+carl.is_alive == False
+fight(bob, mike) == False
+fight(lancelot, rog) == True
+fight(eric, richard) == False
+fight(ogre, adam) == True
 
 my_army = Army()
 my_army.add_units(Defender, 2)
@@ -40,8 +55,10 @@ army_4 = Army()
 army_4.add_units(Vampire, 3)
 army_4.add_units(Warrior, 2)
 
-battle(my_army, enemy_army) == False
-battle(army_3, army_4) == True
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == False
+battle.fight(army_3, army_4) == True
 </pre>
 </p>
 

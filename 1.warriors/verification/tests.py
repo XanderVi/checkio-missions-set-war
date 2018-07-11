@@ -73,5 +73,14 @@ knight = Knight()
 fight(dragon, knight)''',
                      test="knight.is_alive",
                      answer=True)
+                ],
+    "7. Fight": [
+        prepare_test(middle_code='''unit_1 = Warrior()
+unit_2 = Knight()
+unit_3 = Warrior()
+fight(unit_1, unit_2)''',
+                     test="fight(unit_2, unit_3)",
+                     answer=False)
                 ]
+
 }

@@ -1,18 +1,3 @@
-class Army:
-    pass
-
-class Warrior:
-    pass
-
-class Knight(Warrior):
-    pass
-
-def fight(unit_1, unit_2):
-    return 0
-
-def battle(army_1, army_2):
-    return 0
-
 if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing
     
@@ -21,6 +6,7 @@ if __name__ == '__main__':
     bruce = Warrior()
     carl = Knight()
     dave = Warrior()
+    mark = Warrior()
 
     assert fight(chuck, bruce) == True
     assert fight(dave, carl) == False
@@ -28,6 +14,8 @@ if __name__ == '__main__':
     assert bruce.is_alive == False
     assert carl.is_alive == True
     assert dave.is_alive == False
+    assert fight(carl, mark) == False
+    assert carl.is_alive == False
 
     #battle tests
     my_army = Army()
@@ -43,6 +31,8 @@ if __name__ == '__main__':
     army_4 = Army()
     army_4.add_units(Warrior, 30)
 
-    assert battle(my_army, enemy_army) == True
-    assert battle(army_3, army_4) == False
+    battle = Battle()
+
+    assert battle.fight(my_army, enemy_army) == True
+    assert battle.fight(army_3, army_4) == False
     print("Coding complete? Let's try tests!")
