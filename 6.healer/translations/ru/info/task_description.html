@@ -1,0 +1,110 @@
+<div class="story">
+...баланс сил в очередной раз был не на стороне рыцарей.<br>
+Сэр Рональд вновь использовал рог, чтобы призвать последнюю надежду для его армии - лекарей. Храм, в котором они жили, находился даже ближе, чем замок, из которого прибыла первая волна подкрепления. Если лекари смогут прибыть достаточно быстро - они спасут множество жизней и у рыцарей появится шанс на победу.
+</div>
+
+<p>
+Битва продолжается и каждая армия теряет множество хороших воинов. Давайте постараемся исправить это и добавим новый тип юнитов - Healer.<br>
+Healer не будет сражаться лично (его атака равна 0 и он не сможет нанести урон), но его задача не менее полезна - каждый раз, когда союзный солдат бьет врага, Healer, стоящий позади союзника лечит его на +2 единицы здоровья с помощью метода <strong>heal()</strong>. При этом исцеление не может поднять здоровье выше максимального уровня. То есть, если Healer лечит Warrior, у которого 49 единиц здоровья, то после лечения Warrior будет иметь 50 единиц здоровья, так как это - его максимальный уровень.<br>
+Базовые параметры класса Healer:<br>
+health = 60<br>
+attack = 0
+</p>
+
+<!--
+<p style="text-align: center;">
+    <img  title="fight" src="{{MEDIA}}healer_and_knight_vs_defender.png" alt="example" style="max-height: 600px"/>
+</p>
+-->
+
+<p>
+<strong>Пример</strong>:
+<pre class="brush: python">
+chuck = Warrior()
+bruce = Warrior()
+carl = Knight()
+dave = Warrior()
+mark = Warrior()
+bob = Defender()
+mike = Knight()
+rog = Warrior()
+lancelot = Defender()
+eric = Vampire()
+adam = Vampire()
+richard = Defender()
+ogre = Warrior()
+freelancer = Lancer()
+vampire = Vampire()
+priest = Healer()
+
+fight(chuck, bruce) == True
+fight(dave, carl) == False
+chuck.is_alive == True
+bruce.is_alive == False
+carl.is_alive == True
+dave.is_alive == False
+fight(carl, mark) == False
+carl.is_alive == False
+fight(bob, mike) == False
+fight(lancelot, rog) == True
+fight(eric, richard) == False
+fight(ogre, adam) == True
+fight(freelancer, vampire) == True
+freelancer.is_alive == True
+freelancer.health == 14    
+priest.heal(freelancer)
+freelancer.health == 16
+
+my_army = Army()
+my_army.add_units(Defender, 2)
+my_army.add_units(Healer, 1)
+my_army.add_units(Vampire, 2)
+my_army.add_units(Lancer, 2)
+my_army.add_units(Healer, 1)
+my_army.add_units(Warrior, 1)
+    
+enemy_army = Army()
+enemy_army.add_units(Warrior, 2)
+enemy_army.add_units(Lancer, 4)
+enemy_army.add_units(Healer, 1)
+enemy_army.add_units(Defender, 2)
+enemy_army.add_units(Vampire, 3)
+enemy_army.add_units(Healer, 1)
+
+army_3 = Army()
+army_3.add_units(Warrior, 1)
+army_3.add_units(Lancer, 1)
+army_3.add_units(Healer, 1)
+army_3.add_units(Defender, 2)
+
+army_4 = Army()
+army_4.add_units(Vampire, 3)
+army_4.add_units(Warrior, 1)
+army_4.add_units(Healer, 1)
+army_4.add_units(Lancer, 2)
+
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == False
+battle.fight(army_3, army_4) == True
+</pre>
+</p>
+
+<p>
+    <strong>Входные данные: </strong>воины и армии.
+</p>
+
+<p>
+    <strong>Выходные данные: </strong>результат сражения (True или False).
+</p>
+
+
+<p class="for_info_only">
+    <strong>Как это используется: </strong>
+    Для разработки компьютерных игр.
+</p>
+
+<p>
+    <strong>Предусловие:</strong>
+    6 типов солдат
+</p>
