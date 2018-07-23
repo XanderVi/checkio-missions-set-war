@@ -125,7 +125,7 @@ fight(unit_1, unit_2)''',
 unit_2 = Rookie()
 unit_3 = Warrior()
 fight(unit_1, unit_2)''',
-                     test="fight(unit_2, unit_3)",
+                     test="fight(unit_1, unit_3)",
                      answer=True)
                 ],
     "1. Battle": [
