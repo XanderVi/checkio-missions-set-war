@@ -111,20 +111,23 @@ unit_2 = Knight()
 unit_3 = Warrior()
 fight(unit_1, unit_2)''',
                      test="fight(unit_2, unit_3)",
-                     answer=False),
+                     answer=False)
+                ],
     "8. Fight": [
         prepare_test(middle_code='''unit_1 = Defender()
 unit_2 = Rookie()
 fight(unit_1, unit_2)''',
                      test="unit_1.health",
-                     answer=60),
+                     answer=60)
+                ],
     "9. Fight": [
         prepare_test(middle_code='''unit_1 = Defender()
 unit_2 = Rookie()
 unit_3 = Warrior()
 fight(unit_1, unit_2)''',
                      test="fight(unit_2, unit_3)",
-                     answer=True),
+                     answer=True)
+                ],
     "1. Battle": [
         prepare_test(middle_code='''army_1 = Army()
 army_2 = Army()
