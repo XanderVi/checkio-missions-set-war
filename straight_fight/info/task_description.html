@@ -1,19 +1,15 @@
 <div class="story for_info_only">
-...the balance of power was once again not on the knights’ side. <br>
-Sir Ronald used the horn one more time to summon the last hope for his army - the healers. The temple they lived in was even closer than the castle from which the first wave of reinforcements arrived. If the healers get here fast enough, they’ll save many lives and the knights will have a chance to win.
+... despite all the tactical moves undertaken, no victory was given to either side. 
+Therefore, the two army commanders decided to change tactics and send soldiers into battle not one by one, but immediately arrange a battle of all survivors against all.
 </div>
 
 <p>
-The battle is still continue and every army are losing the good warriors. Let's try to fix it and add new unit type - Healer.<br>
-Healer won't fight by himself (his attack = 0 so he can't deal the damage), but his role is also very important - every time the allied soldier hits the enemy, the Healer will heal the allie, who stands right before him by +2 health points with the <strong>heal()</strong> method. Consider that the health after healing is can't be greater than the maximum health of th unit.
-For example, if the Healer heals the Warrior with 49 health points, the Warrior will have 50 hp, because this is the maximum for him.<br>
-The basic parameters of the Healer:<br>
-health = 60<br>
-attack = 0<br>
+In this mission won't added a new type of the units, but will add a new tactics - <strong>straight_fight</strong>(army_1, army_2). It should be the method of the class Battle and it should work in this way:<br>
+at the beginning there will be a few duels between each pair of soldiers from the first and second armies (the first unit against the first, the second against the second and so on). After that all dead soldiers will removed from the both armies and the process repeats until all soldiers of one of the army will be dead. In the initial composition of the armies may not be the same number of soldiers. If for the warriors there is no opponent from the enemy army - wew will assume that they automatically win a duel (for example - 9th and 10th units from the first army, if the second has only 8 soldiers).
 </p>
 
 <p class="for_info_only" style="text-align: center;">
-    <img  title="fight" src="{{MEDIA}}healing_process.png" alt="example" style="max-height: 600px"/>
+    <img  title="fight" src="{{MEDIA}}army_vs_army.png" alt="example" style="max-height: 800px"/>
 </p>
 
 <div class="for_info_only">
@@ -83,10 +79,18 @@ army_4.add_units(Warrior, 1)
 army_4.add_units(Healer, 1)
 army_4.add_units(Lancer, 2)
 
+army_5 = Army()
+army_5.add_units(Warrior, 10)
+
+army_6 = Army()
+army_6.add_units(Warrior, 6)
+army_6.add_units(Lancer, 5)
+
 battle = Battle()
 
 battle.fight(my_army, enemy_army) == False
 battle.fight(army_3, army_4) == True
+battle.straight_fight(army_5, army_6) == False
 </pre>
 </p>
 </div>
@@ -107,5 +111,5 @@ battle.fight(army_3, army_4) == True
 
 <p>
     <strong>Precondition:</strong>
-    6 types of the units
+    5 types of the units, 2 types of the battles
 </p>
