@@ -425,6 +425,6 @@ army_2.add_units(Vampire, 2)
 army_2.add_units(Lancer, 4)
 battle = Battle()''',
                      test="battle.straight_fight(army_1, army_2)",
-                     answer=False)
+                     answer=True)
                 ]
 }
