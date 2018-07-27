@@ -561,7 +561,8 @@ enemy_army.add_units(Vampire, 1)
 my_army.units[0].equip_weapon(weapon_1)
 my_army.units[1].equip_weapon(weapon_1)
 enemy_army.units[0].equip_weapon(weapon_1)
-enemy_army.units[1].equip_weapon(weapon_1)''',
+enemy_army.units[1].equip_weapon(weapon_1)
+battle = Battle()''',
                      test="battle.fight(my_army, enemy_army)",
                      answer=False)
                 ],
