@@ -1,0 +1,120 @@
+<div class="story for_info_only">
+... битва продолжалась достаточно долго для того, чтобы сэр Рональд успел отправить гонца в замок. Вместе с гонцом он передал приказ: "Открыть оружейный склад и привезти на поле боя всё, что там есть". Последняя серьезная война закончилась достаточно давно, поэтому на складе хранился не очень большой арсенал, и все же там было нечто полезное - более качественные мечи и щиты, двуручные боевые топоры, и даже достаточно редкие для этих мест катаны и жезлы.<br>
+Возможно, именно более качественное оружие сможет переломить ход сражения...
+</div>
+
+<p>
+В этой миссии вам необходимо будет добавить класс <strong>Weapon</strong>(health, attack, defense, vampirism, heal_power) чтобы создавать оружие с заданными характеристиками и экипировать им солдат.
+При создании объекта оружия, ему будут переданы значения, которые показывают, как изменятся соответствующие параметры воина, использующего данное оружие. Обратите внимание, что если у солдата нет определенной характеристики (например, defense или vampirism), которая есть на оружии, то эта характеристика не добавляется ему.<br>
+<br>
+Перечень характеристик:<br>
+<strong>health</strong> - добавляет к максимальному и текущему запасу здоровья солдата указанное число<br>
+<strong>attack</strong> - добавляет к атаке солдата указанное число<br>
+<strong>defense</strong> - добавляет к защите солдата указанное число<br>
+<strong>vampirism</strong> - увеличивает вампиризм на указанное количество процентов<br>
+<strong>heal_power</strong> - увеличивает количество здоровья, которое восстанавливает лекарь при каждом исцелении на указанное число<br>
+<br>
+Все указанные параметры оружия могут иметь как положительное, так и отрицательное значение. Таким образом, при добавлении отрицательного модификатора, соответствующая характеристика становится меньше, но не может опуститься ниже 0.<br>
+<br>
+Давайте рассмотрим пример вампира (базовые характеристики: health = 40, attack = 4, vampirism = 50%), надевшего следующее оружие - Weapon(20, 5, 2, -60, -1). Так как у него есть health и attack, они будут изменены - health увеличится до 60 (40 + 20), attack станет 9 (4 + 5). Параметров defense и heal_power у вампира нет, поэтому соответствующие модификаторы на него никак не подействует. Также сработает изменение vampirism -60%, уменьшающее стандартный параметр 50% до -10%. Но так как согласно условиям ни один параметр не может быть меньше 0, vampirism просто будет равен 0% и перестанет работать.<br>
+<br>
+Помимо оружия с задаваемыми характеристиками, вам также необходимо будет создать несколько классов-наследников Weapon с заданными и неизменяемыми характеристиками. Вот их список:<br>
+Sword - health +5, attack +2<br>
+Shield - health +20, attack -1, defense +2<br>
+GreatAxe - health -15, attack +5, defense -2, vampirism +10%<br>
+Katana - health -20, attack +6, defense -5, vampirism +50%<br>
+MagicWand - health +30, attack +3, heal_power +3<br>
+<br>
+И наконец, чтобы суметь надеть оружие, вам необходимо добавить в существующие классы солдат метод <strong>equip_weapon(weapon_name)</strong>.<br>
+Для того, чтобы экипировать солдат, входящих в состав армии, вам необходимо хранить их в списке units и обращаться по индексу. Например:<br>
+my_army.units[0].equip_weapon(Sword()) - снаряжает первого воина мечом.<br>
+<br>
+Примечания:<br>
+В процессе исцеления от лекаря или лечения вампиризмом, запас здоровья не может стать больше, чем максимальный запас (с учетом всех модификаторов оружия).<br>
+Если лечение от вампиризма оказывается не целым числом, (например: 3.6, 1.1, 2.945), округляйте вниз в любом случае. Таким образом, 3.6 = 3, 1.1 = 1, 2.945 = 2.<br>
+Любой солдат может надеть любое количество оружия и получить все бонусы от них, но если он наденет слишком много вещей с отрицательным модификатором health и опустит своё здоровье до 0, то умрет.
+</p>
+
+<p class="for_info_only" style="text-align: center;">
+    <img  title="fight" src="{{MEDIA}}warrior_vs_knight+weapons.png" alt="example" style="max-height: 800px"/>
+</p>
+
+<div class="for_info_only">
+<p>
+<strong>Пример</strong>:
+<pre class="brush: python">
+ogre = Warrior()
+lancelot = Knight()
+richard = Defender()
+eric = Vampire()
+freelancer = Lancer()
+priest = Healer()
+
+sword = Sword()
+shield = Shield()
+axe = GreatAxe()
+katana = Katana()
+wand = MagicWand()
+super_weapon = Weapon(50, 10, 5, 150, 8)
+
+ogre.equip_weapon(sword)
+ogre.equip_weapon(shield)
+ogre.equip_weapon(super_weapon)
+lancelot.equip_weapon(super_weapon)
+richard.equip_weapon(shield)
+eric.equip_weapon(super_weapon)
+freelancer.equip_weapon(axe)
+freelancer.equip_weapon(katana)
+priest.equip_weapon(wand)
+priest.equip_weapon(shield)
+
+ogre.health == 125
+lancelot.attack == 17
+richard.defense == 4
+eric.vampirism == 200
+freelancer.health == 15
+priest.heal_power == 5
+
+fight(ogre, eric) == False
+fight(priest, richard) == False
+fight(lancelot, freelancer) == True
+
+my_army = Army()
+my_army.add_units(Knight, 1)
+my_army.add_units(Lancer, 1)
+
+enemy_army = Army()
+enemy_army.add_units(Vampire, 1)
+enemy_army.add_units(Healer, 1)
+
+my_army.units[0].equip_weapon(axe)
+my_army.units[1].equip_weapon(super_weapon)
+
+enemy_army.units[0].equip_weapon(katana)
+enemy_army.units[1].equip_weapon(wand)
+
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == True
+</pre>
+</p>
+</div>
+
+<p>
+    <strong>Входные данные: </strong>воины, армии и оружие.
+</p>
+
+<p>
+    <strong>Выходные данные: </strong>результат сражения (True или False).
+</p>
+
+
+<p class="for_info_only">
+    <strong>Как это используется: </strong>
+    Для разработки компьютерных игр.
+</p>
+
+<p>
+    <strong>Предусловие:</strong>
+    5 типов солдат, 2 типа сражений
+</p>

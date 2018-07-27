@@ -1,0 +1,120 @@
+<div class="story for_info_only">
+... the battle lasted long enough and Sir Ronald have send the messenger to the castle. Together with the messenger, he gave the order: "Open the weapons storehouse and bring everything from it to the battlefield." The last serious war has ended a long time ago, so there was not a very large arsenal in the warehouse, but there was something useful - better swords and shields, two-handed battle axes, and even quite rare for these places, katana and wands. <br>
+Perhaps, those better weapons can turn the battle ...
+</div>
+
+<p>
+In this mission youshould create a new class <strong>Weapon</strong>(health, attack, defense, vampirism, heal_power) which will equip your soldiers with weapons. Every weapon's object will have the parameters which will show how will change the soldier's characteristics while he will use this weapon. Assume that if the soldier doesn't have some characteristic (for example defense or vampirism), but weapon have it, this parameter doesn't add to the soldier.<br>
+<br>
+The parameters list:<br>
+<strong>health</strong> - add to the current health and the maximum health of the soldier this modificator<br>
+<strong>attack</strong> - add to the soldier's attack this modificator<br>
+<strong>defense</strong> - add to the soldier's defense this modificator<br>
+<strong>vampirism</strong> - increase vampirism of the soldier to this number (in %. So vampirism = 20 means +20%)<br>
+<strong>heal_power</strong> - increase the amount of health which healer restore to the allied unit<br>
+<br>
+All parameters could be positive or negative, so when negative modificator is adds to the soldier stats, they are decreasing, but any of them couldn't be less then 0.<br>
+<br>
+Lets look to this example: vampire (basic parameters: health = 40, attack = 4, vampirism = 50%) equip the Weapon(20, 5, 2, -60, -1). The vampire has the health and the attack, so they will change - health will grows up to 60 (40 + 20), attack will be 9 (4 + 5). The vampire hasn't the
+defense or the heal_power, so this modificators of the weapon will be ignored. Also will work the weapon's vampirism modificator -60%. The standard vampirism value is only 50%, so we will get -10%. But, as we said before, the parameters couldn't be less then 0, so the vampirism after all manipulations will be just 0%.<br>
+<br>
+Also you should create a few classes of the standard weapons, which should be the subclasses of the Weapon. The list of them:<br>
+Sword - health +5, attack +2<br>
+Shield - health +20, attack -1, defense +2<br>
+GreatAxe - health -15, attack +5, defense -2, vampirism +10%<br>
+Katana - health -20, attack +6, defense -5, vampirism +50%<br>
+MagicWand - health +30, attack +3, heal_power +3<br>
+<br>
+And finally, you should add a method <strong>equip_weapon(weapon_name)</strong> to the all classes of the soldiers. It should equip chosen soldier with the chosen weapon.<br>
+This method also should work for the units in the army. You should hold them in the list and use it like this:<br>
+my_army.units[0].equip_weapon(Sword()) - equip the first soldier with the sword.<br>
+<br>
+Notes:<br>
+While healing (both - vampirism or health restore by the healer), the health is couldn't be greater than the maximum amount of health for this unit (with considering all weapon's modificators).<br>
+If the heal from vampirism is float (for example 3.6, 1.1, 2.945), round it down in any case. So 3.6 = 3, 1.1 = 1, 2.945 = 2.<br>
+Every soldier could equip any number of the weapons and get all their bonuses, but if he wear too much weapons with negative health modificator and his health is lower or equal 0 - he is dead.
+</p>
+
+<p class="for_info_only" style="text-align: center;">
+    <img  title="fight" src="{{MEDIA}}warrior_vs_knight+weapons.png" alt="example" style="max-height: 800px"/>
+</p>
+
+<div class="for_info_only">
+<p>
+<strong>Example</strong>:
+<pre class="brush: python">
+ogre = Warrior()
+lancelot = Knight()
+richard = Defender()
+eric = Vampire()
+freelancer = Lancer()
+priest = Healer()
+
+sword = Sword()
+shield = Shield()
+axe = GreatAxe()
+katana = Katana()
+wand = MagicWand()
+super_weapon = Weapon(50, 10, 5, 150, 8)
+
+ogre.equip_weapon(sword)
+ogre.equip_weapon(shield)
+ogre.equip_weapon(super_weapon)
+lancelot.equip_weapon(super_weapon)
+richard.equip_weapon(shield)
+eric.equip_weapon(super_weapon)
+freelancer.equip_weapon(axe)
+freelancer.equip_weapon(katana)
+priest.equip_weapon(wand)
+priest.equip_weapon(shield)
+
+ogre.health == 125
+lancelot.attack == 17
+richard.defense == 4
+eric.vampirism == 200
+freelancer.health == 15
+priest.heal_power == 5
+
+fight(ogre, eric) == False
+fight(priest, richard) == False
+fight(lancelot, freelancer) == True
+
+my_army = Army()
+my_army.add_units(Knight, 1)
+my_army.add_units(Lancer, 1)
+
+enemy_army = Army()
+enemy_army.add_units(Vampire, 1)
+enemy_army.add_units(Healer, 1)
+
+my_army.units[0].equip_weapon(axe)
+my_army.units[1].equip_weapon(super_weapon)
+
+enemy_army.units[0].equip_weapon(katana)
+enemy_army.units[1].equip_weapon(wand)
+
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == True
+</pre>
+</p>
+</div>
+
+<p>
+    <strong>Input: </strong>warriors, armies and weapons.
+</p>
+
+<p>
+    <strong>Output: </strong> result of the battle (True or False).
+</p>
+
+
+<p class="for_info_only">
+    <strong>How it is used: </strong>
+    For the computer games development.
+</p>
+
+<p>
+    <strong>Precondition:</strong>
+    5 types of the units, 2 types of the battles
+</p>
