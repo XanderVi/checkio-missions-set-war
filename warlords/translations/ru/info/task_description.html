@@ -1,0 +1,85 @@
+<div class="story for_info_only">
+... после всех предпринятых попыток, сэру Рональду все же не удавалось одержать победу. Он наконец осознал, что это не просто небольшая стычка, а полноценные военные действия и ему необходимо применить весь свой опыт, чтобы эффективно управлять своим войском.<br>
+Похоже, в этот раз результат битвы решится окончательно.
+</div>
+
+<p>
+В этой миссии вам необходимо будет добавить класс <strong>Warlord()</strong>, который должен быть наследником класса Warrior и иметь следующие характеристики:<br>
+health = 100<br>
+attack = 4<br>
+defense = 2<br>
+<br>
+Также Warlord должен обладать методом <strong>move_units()</strong>, который позволяет переставлять союзных солдат (солдат из той же армии, в которую входит и сам Warlord) для более эффективного сражения. Перестановка производится как перед началом битвы, так и в процессе, после смерти каждого союзного солдата. Правила для перестановок следующие:<br>
+<ol>
+<li>Если в армии есть Lancers, они должны быть переставлены в самое начало.</li>
+<li>Если в армии есть хотя бы 1 Healer, он должен стоять сразу за первым воином и лечить его. Если Healers больше 1, все они также должны быть поставлены сразу за первым Healer.</li>
+<li>Если в армии больше нет Lancers, но остались другие солдаты, которые могут атаковать (за исключением Warlord) - они также должны быть поставлены на первую позицию, а Healer должен оставаться за ними (если Healers еще остались).</li>
+<li>Warlord всегда должен находиться в самом конце армии, чтобы иметь возможность наблюдать за сражением и переставлять воинов по мере необходимости.</li>
+<li>В каждой армии может быть не более 1 Warlord.</li>
+</ol>
+</p>
+
+<p class="for_info_only" style="text-align: center;">
+    <img  title="fight" src="{{MEDIA}}warlord.png" alt="example" style="max-height: 1100px"/>
+</p>
+
+<div class="for_info_only">
+<p>
+<strong>Пример</strong>:
+<pre class="brush: python">
+ronald = Warlord()
+heimdall = Knight()
+
+fight(heimdall, ronald) == False
+
+my_army = Army()
+my_army = Army().add_units(Warlord, 1)
+my_army = Army().add_units(Warrior, 2)
+my_army = Army().add_units(Lancer, 2)
+my_army = Army().add_units(Healer, 2)
+
+enemy_army = Army()
+enemy_army.add_units(Warlord, 3)
+enemy_army.add_units(Vampire, 1)
+enemy_army.add_units(Healer, 2)
+enemy_army.add_units(Knight, 2)
+
+my_army.units[0].move_units()
+enemy_army.units[0].move_units()
+
+type(my_army.units[0]) == Lancer
+type(my_army.units[1]) == Healer
+type(my_army.units[-1]) == Warlord
+
+type(enemy_army.units[0]) == Vampire
+type(enemy_army.units[-1]) == Warlord
+type(enemy_army.units[-2]) == Knight
+
+#6, not 8, because only 1 Warlord per army could be
+len(enemy_army.units) == 6
+
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == True
+</pre>
+</p>
+</div>
+
+<p>
+    <strong>Входные данные: </strong>воины, армии и оружие.
+</p>
+
+<p>
+    <strong>Выходные данные: </strong>результат сражения (True или False).
+</p>
+
+
+<p class="for_info_only">
+    <strong>Как это используется: </strong>
+    Для разработки компьютерных игр.
+</p>
+
+<p>
+    <strong>Предусловие:</strong>
+    6 типов солдат, 2 типа сражений
+</p>
