@@ -66,6 +66,7 @@ Battle = USER_GLOBAL['Battle']
 
 class Rookie(Warrior):
     def __init__(self):
+        super().__init__()
         self.health = 50
         self.attack = 1
 
