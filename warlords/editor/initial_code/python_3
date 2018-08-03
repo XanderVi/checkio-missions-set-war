@@ -7,10 +7,10 @@ if __name__ == '__main__':
 	fight(heimdall, ronald) == False
 
 	my_army = Army()
-	my_army = Army().add_units(Warlord, 1)
-	my_army = Army().add_units(Warrior, 2)
-	my_army = Army().add_units(Lancer, 2)
-	my_army = Army().add_units(Healer, 2)
+	my_army.add_units(Warlord, 1)
+	my_army.add_units(Warrior, 2)
+	my_army.add_units(Lancer, 2)
+	my_army.add_units(Healer, 2)
 
 	enemy_army = Army()
 	enemy_army.add_units(Warlord, 3)
@@ -18,8 +18,8 @@ if __name__ == '__main__':
 	enemy_army.add_units(Healer, 2)
 	enemy_army.add_units(Knight, 2)
 
-	my_army.units[0].move_units()
-	enemy_army.units[0].move_units()
+	my_army.move_units()
+	enemy_army.move_units()
 
 	type(my_army.units[0]) == Lancer
 	type(my_army.units[1]) == Healer

@@ -9,13 +9,14 @@ health = 100<br>
 attack = 4<br>
 defense = 2<br>
 <br>
-Also the Warlord should has a method <strong>move_units()</strong> which allows to rearrange the allied units (the soldier who are in the same army as Warlord) for the better battle result. The rearrangement is done not only before the battle, but during the battle too, each time the allied units die. The rules for the rearrangement are the next:<br>
+Also, when the Warlord is included in the some army, this army gets the new method <strong>move_units()</strong> which allows to rearrange the units of this army for the better battle result. The rearrangement is done not only before the battle, but during the battle too, each time the allied units die. The rules for the rearrangement are the next:<br>
 <ol>
 <li>If the Lancers are in the army, the should be placed in the front of the army.</li>
 <li>If the Healer are in the army, he should be placed right after the first soldier to heal him during the fight. If the number of Healers is > 1, all of them should be placed right behind the first Healer.</li>
 <li>If the are no more Lancers in the army, but there is another soldiers who can deal damage, they also should be placed at the first position, and the Healer should stay at the 2nd place (if army still has the Healers).</li>
 <li>Warlord always should stay at the end of the army to look over the battle and reaarange the soldiers when it's needed.</li>
 <li>Every army could have no more than 1 Warlord.</li>
+<li>If the army has no Warlord, it couldn't use the method move_units()</li>
 </ol>
 </p>
 
@@ -33,10 +34,10 @@ heimdall = Knight()
 fight(heimdall, ronald) == False
 
 my_army = Army()
-my_army = Army().add_units(Warlord, 1)
-my_army = Army().add_units(Warrior, 2)
-my_army = Army().add_units(Lancer, 2)
-my_army = Army().add_units(Healer, 2)
+my_army.add_units(Warlord, 1)
+my_army.add_units(Warrior, 2)
+my_army.add_units(Lancer, 2)
+my_army.add_units(Healer, 2)
 
 enemy_army = Army()
 enemy_army.add_units(Warlord, 3)
@@ -44,8 +45,8 @@ enemy_army.add_units(Vampire, 1)
 enemy_army.add_units(Healer, 2)
 enemy_army.add_units(Knight, 2)
 
-my_army.units[0].move_units()
-enemy_army.units[0].move_units()
+my_army.move_units()
+enemy_army.move_units()
 
 type(my_army.units[0]) == Lancer
 type(my_army.units[1]) == Healer

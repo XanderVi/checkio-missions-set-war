@@ -510,8 +510,8 @@ army_2.add_units(Warlord, 1)
 army_2.add_units(Vampire, 1)
 army_2.add_units(Healer, 2)
 army_2.add_units(Knight, 2)
-army_1.units[0].move_units()
-army_2.units[0].move_units()
+army_1.move_units()
+army_2.move_units()
 battle = Battle()''',
                      test="battle.fight(army_1, army_2)",
                      answer=True)
@@ -527,8 +527,8 @@ army_2.add_units(Warlord, 2)
 army_2.add_units(Vampire, 1)
 army_2.add_units(Healer, 5)
 army_2.add_units(Knight, 2)
-army_1.units[-1].move_units()
-army_2.units[0].move_units()
+army_1.move_units()
+army_2.move_units()
 battle = Battle()''',
                      test="battle.fight(army_1, army_2)",
                      answer=False)
@@ -546,8 +546,8 @@ army_2.add_units(Rookie, 1)
 army_2.add_units(Knight, 1)
 army_1.units[0].equip_weapon(Sword())
 army_2.units[0].equip_weapon(Shield())
-army_1.units[-1].move_units()
-army_2.units[0].move_units()
+army_1.move_units()
+army_2.move_units()
 battle = Battle()''',
                      test="battle.fight(army_1, army_2)",
                      answer=True)
@@ -565,8 +565,8 @@ army_2.add_units(Rookie, 1)
 army_2.add_units(Knight, 1)
 army_1.units[0].equip_weapon(Sword())
 army_2.units[0].equip_weapon(Shield())
-army_1.units[-1].move_units()
-army_2.units[0].move_units()
+army_1.move_units()
+army_2.move_units()
 battle = Battle()''',
                      test="battle.straight_fight(army_1, army_2)",
                      answer=False)
