@@ -77,6 +77,19 @@ battle.fight(army_3, army_4) == True
     For the computer games development.
 </p>
 
+<p class="for_info_only">
+    <strong>Note:</strong>
+    From now on, the tests from "check" part will use another type of warrior:
+    the rookie. Its code is
+<pre class="brush: python">
+class Rookie(Warrior):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.health = 50
+        self.attack = 1
+</pre>
+</p>
+
 <p>
     <strong>Precondition:</strong>
     3 types of units

@@ -65,8 +65,8 @@ if not "Battle" in USER_GLOBAL:
 Battle = USER_GLOBAL['Battle']
 
 class Rookie(Warrior):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.health = 50
         self.attack = 1
 
