@@ -11,6 +11,10 @@ at first, there is a duel between the first warrior of the first army and the fi
 </p>
 
 <p>
+Border conditions: if both armies have no units then first one win.
+</p>
+
+<p>
 Note that army 1 have the advantage to start every fight!
 </p>
 
@@ -50,10 +54,14 @@ army_3.add_units(Knight, 5)
 army_4 = Army()
 army_4.add_units(Warrior, 30)
 
+army_5 = Army()
+army_6 = Army()
+
 battle = Battle()
 
 battle.fight(my_army, enemy_army) == True
 battle.fight(army_3, army_4) == False
+battle.fight(army_5, army_6) == True
 </pre>
 </p>
 </div>
