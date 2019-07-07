@@ -318,4 +318,14 @@ battle = Battle()''',
                      test="battle.fight(army_1, army_2)",
                      answer=True)
                 ]
+
+        "17. Battle": [
+        prepare_test(middle_code='''battle = Battle()
+army_1 = Army()
+army_2 = Army()
+army_1.add_units(Lancer, 2)
+army_2.add_units(Warrior, 3)''',
+                     test="battle.fight(army_1, army_2)",
+                     answer=True)
+                ]
 }
