@@ -18,6 +18,10 @@ attack = 4<br>
 vampirism = 50%<br>
 </p>
 
+<p>
+You should store vampirism attribute as an integer (50 for 50%). It will be needed to make this solution evolutes to fit one of the next challenges of this saga.
+</p>
+
 <p class="for_info_only" style="text-align: center;">
     <img  title="fight" src="{{MEDIA}}defender_vs_vampire.png" alt="example" style="max-height: 600px"/>
 </p>
@@ -57,7 +61,7 @@ my_army = Army()
 my_army.add_units(Defender, 2)
 my_army.add_units(Vampire, 2)
 my_army.add_units(Warrior, 1)
-    
+
 enemy_army = Army()
 enemy_army.add_units(Warrior, 2)
 enemy_army.add_units(Defender, 2)

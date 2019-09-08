@@ -5,13 +5,10 @@ Fortunately, the reinforcements for both sides arrived almost simultaneously. No
 </div>
 
 <p>
-In the previous mission - Warriors - you've learned how to make a duel between 2 warriors happen. Great job! But let's move to something that feels a little more epic - the armies! In this mission your task is to add new classes and  functions to the existing ones. The new class should be the <strong>Army</strong> and have the method <strong>add_units()</strong> - for adding the chosen amount of units to the army. Also you need to create a <strong>Battle()</strong> class with a <strong>fight()</strong> function, which will determine the strongest army.<br>
+In the previous mission - Warriors - you've learned how to make a duel between 2 warriors happen. Great job! But let's move to something that feels a little more epic - the armies! In this mission your task is to add new classes and  functions to the existing ones. The new class should be the <strong>Army</strong> and have the method <strong>add_units()</strong> - for adding the chosen amount of units to the army. The first unit added will be the first to go to fight, the second will be the second, ...<br>
+Also you need to create a <strong>Battle()</strong> class with a <strong>fight()</strong> function, which will determine the strongest army.<br>
 The battles occur according to the following principles:<br>
 at first, there is a duel between the first warrior of the first army and the first warrior of the second army. As soon as one of them dies - the next warrior from the army that lost the fighter enters the duel, and the surviving warrior continues to fight with his current health. This continues until all the soldiers of one of the armies die. In this case, the battle() function should return <strong>True</strong>, if the first army won, or <strong>False</strong>, if the second one was stronger.<br>
-</p>
-
-<p>
-Border conditions: if both armies have no units then first one win.
 </p>
 
 <p>
@@ -43,25 +40,21 @@ carl.is_alive == False
 
 my_army = Army()
 my_army.add_units(Knight, 3)
-    
+
 enemy_army = Army()
 enemy_army.add_units(Warrior, 3)
 
 army_3 = Army()
 army_3.add_units(Warrior, 20)
 army_3.add_units(Knight, 5)
-    
+
 army_4 = Army()
 army_4.add_units(Warrior, 30)
-
-army_5 = Army()
-army_6 = Army()
 
 battle = Battle()
 
 battle.fight(my_army, enemy_army) == True
 battle.fight(army_3, army_4) == False
-battle.fight(army_5, army_6) == True
 </pre>
 </p>
 </div>
@@ -82,5 +75,8 @@ battle.fight(army_5, army_6) == True
 
 <p>
     <strong>Precondition:</strong>
-    2 types of units
+    <ul>
+        <li>2 types of units</li>
+        <li>For all battles, each army is obviously not empty at the beginning.</li>
+    </ul>
 </p>
