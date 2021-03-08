@@ -12,6 +12,9 @@ Knight = USER_GLOBAL['Knight']
 if not issubclass(Knight, Warrior):
     raise Warning("Knight should be the sublcass of the Warrior")
 
+if "fight" not in USER_GLOBAL:
+    raise NotImplementedError("Where is 'fight'?")
+
 fight = USER_GLOBAL['fight']
 """
 

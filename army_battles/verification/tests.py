@@ -22,6 +22,9 @@ if not "Battle" in USER_GLOBAL:
 
 Battle = USER_GLOBAL['Battle']
 
+if "fight" not in USER_GLOBAL:
+    raise NotImplementedError("Where is 'fight'?")
+
 fight = USER_GLOBAL['fight']
 """
 
