@@ -57,6 +57,9 @@ Warlord = USER_GLOBAL['Warlord']
 if not issubclass(Warlord, Warrior):
     raise Warning("Warlord should be the subclass of the Warrior")
 
+if "fight" not in USER_GLOBAL:
+    raise NotImplementedError("Where is 'fight'?")
+
 fight = USER_GLOBAL['fight']
 
 if not "Battle" in USER_GLOBAL:
